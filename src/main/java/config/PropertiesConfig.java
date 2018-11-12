@@ -1,10 +1,10 @@
 package config;
 
 
-import com.jcraft.jsch.JSch;
 //import com.jcraft.jsch.JSch;
-import com.jcraft.jsch.JSchException;
-import com.jcraft.jsch.Session;
+//import com.jcraft.jsch.JSch;
+//import com.jcraft.jsch.JSchException;
+//import com.jcraft.jsch.Session;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -30,11 +30,11 @@ import java.util.Properties;
 public class PropertiesConfig {
 
 
-    private String username = "s209617";
+    private String username = "myuser";
 
-    private String password = "vvx757";
+    private String password = "123";
 
-    private String url = "jdbc:postgresql://localhost:63333/studs";
+    private String url = "jdbc:postgresql://localhost:5432/vzope";
 
     private String driver = "org.postgresql.Driver";
 
@@ -44,14 +44,14 @@ public class PropertiesConfig {
 
     private String packageToScan = "entities";
 
-    private String sshUser = "s209617";
+    //private String sshUser = "s209617";
 
-    private String sshHost = "helios.cs.ifmo.ru";
+    //private String sshHost = "helios.cs.ifmo.ru";
 
-    private String sshPassword = "vvx757";
+    //private String sshPassword = "vvx757";
 
 
-    @PostConstruct
+    /*@PostConstruct
     public void init(){
         try {
             JSch jSch = new JSch();
@@ -65,7 +65,7 @@ public class PropertiesConfig {
         }catch (JSchException e){
             e.printStackTrace();
         }
-    }
+    }*/
 
 
     @Bean
@@ -91,7 +91,7 @@ public class PropertiesConfig {
     }
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws JSchException {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() /*throws JSchException*/ {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource());
         entityManagerFactoryBean.setJpaVendorAdapter(jpaVendorAdapter());
