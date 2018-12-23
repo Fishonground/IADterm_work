@@ -26,7 +26,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableJpaRepositories("repository")
-@ComponentScan("repository")
+@ComponentScan({"repository", "serviseImpl"})
 public class PropertiesConfig {
 
 

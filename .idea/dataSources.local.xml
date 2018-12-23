@@ -19,5 +19,23 @@
         <auth-type>PASSWORD</auth-type>
       </ssh-properties>
     </data-source>
+    <data-source name="NewPersistenceUnit/Hibernate" uuid="d0340f1e-2b35-431e-842f-bee3d2d0e243">
+      <database-info product="PostgreSQL" version="9.6.10" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.2" family="POSTGRES" exact-version="9.6.10">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>myuser</user-name>
+      <introspection-schemas>vzope:*</introspection-schemas>
+    </data-source>
+    <data-source name="vzope@localhost" uuid="b943aadd-b958-4116-934f-18dfbfec4e30">
+      <database-info product="PostgreSQL" version="9.6.10" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.2" family="POSTGRES" exact-version="9.6.10">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>myuser</user-name>
+      <introspection-schemas>@:@</introspection-schemas>
+    </data-source>
   </component>
 </project>

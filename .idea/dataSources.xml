@@ -7,5 +7,21 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://pg:5432/studs</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="NewPersistenceUnit/Hibernate" uuid="d0340f1e-2b35-431e-842f-bee3d2d0e243">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate
+
+/home/stepan/Загрузки/IADterm_work/src/main/java/META-INF/persistence.xml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/vzope</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="vzope@localhost" uuid="b943aadd-b958-4116-934f-18dfbfec4e30">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/vzope</jdbc-url>
+    </data-source>
   </component>
 </project>

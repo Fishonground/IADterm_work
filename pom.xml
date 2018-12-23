@@ -7,9 +7,21 @@
     <groupId>groupId</groupId>
     <artifactId>kursach</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <!--<properties>-->
-        <!--<url>C:\Users\Stepan\Downloads\source-0.1.44.jar</url>-->
+        <!--<url>C:\serviseImpl.Users\Stepan\Downloads\source-0.1.44.jar</url>-->
     <!--</properties>-->
 
     <!--<repositories>-->
