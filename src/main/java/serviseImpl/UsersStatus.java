@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import repository.UsersStatusRepository;
 
+import java.util.NoSuchElementException;
+import java.util.Optional;
+
 @Service
 public class UsersStatus {
     @Autowired
@@ -23,5 +26,11 @@ public class UsersStatus {
         usersStatusEntity.setName(status);
         usersStatusRepository.save(usersStatusEntity);
         return usersStatusEntity;
+    }
+    @Transactional
+    public UsersStatusEntity searchById(Integer id) throws NoSuchElementException {
+        Optional<UsersStatusEntity> usersStatusEntity = usersStatusRepository.findById(id);
+        if (usersStatusEntity.isPresent()) return usersStatusEntity.get();
+        else throw new NoSuchElementException("It doesn't exist!");
     }
 }
