@@ -1,5 +1,7 @@
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -64,6 +66,7 @@ public class RoomsEntity {
     }
 
     @OneToMany(mappedBy = "roomsByRoom")
+    @JsonIgnore
     public Collection<PrisonerEntity> getPrisonersById() {
         return prisonersById;
     }

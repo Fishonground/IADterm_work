@@ -20,35 +20,61 @@
         </plugins>
     </build>
 
-    <!--<properties>-->
-        <!--<url>C:\serviseImpl.Users\Stepan\Downloads\source-0.1.44.jar</url>-->
-    <!--</properties>-->
+    <!--This I haven't added, but was in manual...>
+    <groupId>spring-security-exam</groupId>
+    <artifactId>spring-security-exam</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging-->
 
-    <!--<repositories>-->
-        <!--<repository>-->
-            <!--<id>ssh</id>-->
-            <!--<name>ssh</name>-->
-            <!--<url>file:${url}</url>-->
-        <!--</repository>-->
-    <!--</repositories>-->
+    <!-- I've added this to Spring Sequrity-->
+    <properties>
+        <javax.servlet>3.0.1</javax.servlet>
+        <jstl.version>1.2</jstl.version>
+        <spring.securiry>5.0.4.RELEASE</spring.securiry>
+        <jackson-version>2.9.7</jackson-version>
+    </properties>
 
 
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/com.jcraft/jsch -->
-        <!--<dependency>
-            <groupId>com.jcraft</groupId>
-            <artifactId>jsch</artifactId>
-            <version>0.1.54</version>
-        </dependency>-->
+        <!-- I've added this to Spring Sequrity-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.securiry}</version>
+        </dependency>
 
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet}</version>
+            <scope>provided</scope>
+        </dependency>
 
-        <!--<dependency>
-            <groupId>kek</groupId>
-            <artifactId>cheburek</artifactId>
-            <scope>system</scope>
-            <systemPath>${url}</systemPath>
-        </dependency>-->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring.securiry}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${spring.securiry}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring.securiry}</version>
+        </dependency>
+        <!-- I've added till this place-->
         <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
         <dependency>
             <groupId>org.springframework.data</groupId>
@@ -70,6 +96,8 @@
             <version>42.2.2</version>
         </dependency>
 
+
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -84,10 +112,21 @@
 
 
 
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-version}</version>
+        </dependency>
+
+
 
 
 
     </dependencies>
-
-
 </project>

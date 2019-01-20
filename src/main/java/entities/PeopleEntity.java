@@ -1,5 +1,7 @@
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Collection;
@@ -13,7 +15,7 @@ public class PeopleEntity {
     private String secondName;
     private Date dateOfBirth;
     private String gender;
-    private String ôîòî;
+    private String photo;
     private PrisonerEntity prisonerById;
     private Collection<UsersEntity> usersById;
 
@@ -79,12 +81,12 @@ public class PeopleEntity {
 
     @Basic
     @Column(name = "Ôîòî")
-    public String getÔîòî() {
-        return ôîòî;
+    public String getPhoto() {
+        return photo;
     }
 
-    public void setÔîòî(String ôîòî) {
-        this.ôîòî = ôîòî;
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     @Override
@@ -100,7 +102,7 @@ public class PeopleEntity {
         if (secondName != null ? !secondName.equals(that.secondName) : that.secondName != null) return false;
         if (dateOfBirth != null ? !dateOfBirth.equals(that.dateOfBirth) : that.dateOfBirth != null) return false;
         if (gender != null ? !gender.equals(that.gender) : that.gender != null) return false;
-        if (ôîòî != null ? !ôîòî.equals(that.ôîòî) : that.ôîòî != null) return false;
+        if (photo != null ? !photo.equals(that.photo) : that.photo != null) return false;
 
         return true;
     }
@@ -113,11 +115,12 @@ public class PeopleEntity {
         result = 31 * result + (secondName != null ? secondName.hashCode() : 0);
         result = 31 * result + (dateOfBirth != null ? dateOfBirth.hashCode() : 0);
         result = 31 * result + (gender != null ? gender.hashCode() : 0);
-        result = 31 * result + (ôîòî != null ? ôîòî.hashCode() : 0);
+        result = 31 * result + (photo != null ? photo.hashCode() : 0);
         return result;
     }
 
     @OneToOne(mappedBy = "peopleByPersonId")
+    @JsonIgnore
     public PrisonerEntity getPrisonerById() {
         return prisonerById;
     }
@@ -127,6 +130,7 @@ public class PeopleEntity {
     }
 
     @OneToMany(mappedBy = "peopleByPeopleId")
+    @JsonIgnore
     public Collection<UsersEntity> getUsersById() {
         return usersById;
     }

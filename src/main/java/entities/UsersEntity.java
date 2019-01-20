@@ -1,5 +1,9 @@
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -64,6 +68,7 @@ public class UsersEntity {
     }
 
     @OneToMany(mappedBy = "usersByUser")
+    @JsonIgnore
     public Collection<MessagesEntity> getMessagesByLogin() {
         return messagesByLogin;
     }
@@ -73,6 +78,7 @@ public class UsersEntity {
     }
 
     @OneToMany(mappedBy = "usersByCustomer")
+    @JsonIgnore
     public Collection<OrdersEntity> getOrdersByLogin() {
         return ordersByLogin;
     }
@@ -82,6 +88,7 @@ public class UsersEntity {
     }
 
     @OneToMany(mappedBy = "usersByOwner")
+    @JsonIgnore
     public Collection<PrisonerEntity> getPrisonersByLogin() {
         return prisonersByLogin;
     }

@@ -1,5 +1,8 @@
 package entities;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -62,6 +65,7 @@ public class FactionEntity {
     }
 
     @OneToMany(mappedBy = "factionByFaction")
+    @LazyCollection(LazyCollectionOption.FALSE)
     public Collection<PrisonerEntity> getPrisonersByName() {
         return prisonersByName;
     }

@@ -2,22 +2,25 @@ package serviseImpl;
 
 import entities.ProductEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import repository.ProductRepository;
 
+@Service
 public class Product {
     @Autowired
 
     ProductRepository productRepository;
 
     @Transactional
-    public void CreateNewProduct(String name, Integer count, Integer price, Integer authority){
+    public ProductEntity CreateNewProduct(String name, Integer count, Integer price, Integer authority){
         ProductEntity productEntity = new ProductEntity();
         productEntity.setName(name);
         productEntity.setCount(count);
         productEntity.setPrice(price);
         productEntity.setAuthority(authority);
         productRepository.save(productEntity);
+        return productEntity;
     }
 
     @Transactional
@@ -45,4 +48,13 @@ public class Product {
         productRepository.save(productEntity);
         return (productEntity);
     }
+    public ProductEntity getProductById(String id){
+        ProductEntity productEntity = productRepository.findById(id).get();
+        return productEntity;
+    }
+    public Integer delProductById(String id){
+        productRepository.deleteById(id);
+        return 1;
+    }
+
 }

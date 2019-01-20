@@ -2,11 +2,13 @@ package serviseImpl;
 
 import entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import repository.PrisonerRepository;
 
 import java.sql.Date;
 
+@Service
 public class Prisoner {
     @Autowired
 
@@ -14,7 +16,7 @@ public class Prisoner {
     PrisonerRepository prisonerRepository;
 
     @Transactional
-    public void CreateNewPrisoner(Integer id, java.sql.Date term , RoomsEntity roomsEntity, UsersEntity usersEntity, Integer rating, FactionEntity factionEntity){
+    public PrisonerEntity CreateNewPrisoner(Integer id, Date term , RoomsEntity roomsEntity, UsersEntity usersEntity, Integer rating, FactionEntity factionEntity){
         PrisonerEntity prisonerEntity = new PrisonerEntity();
         prisonerEntity.setPersonId(id);
         prisonerEntity.setTerm(term);
@@ -23,6 +25,7 @@ public class Prisoner {
         prisonerEntity.setRating(rating);
         prisonerEntity.setFactionByFaction(factionEntity);
         prisonerRepository.save(prisonerEntity);
+        return prisonerEntity;
     }
 
     @Transactional
@@ -48,4 +51,13 @@ public class Prisoner {
         prisonerRepository.save(prisonerEntity);
         return (prisonerEntity);
     }
+    public PrisonerEntity getPrisonerById(Integer id){
+        PrisonerEntity prisonerEntity = prisonerRepository.findById(id).get();
+        return prisonerEntity;
+    }
+    public Integer delPrisonersById(Integer id){
+        prisonerRepository.deleteById(id);
+        return 1;
+    }
+
 }

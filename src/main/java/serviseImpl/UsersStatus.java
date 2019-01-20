@@ -15,11 +15,12 @@ public class UsersStatus {
             UsersStatusRepository usersStatusRepository;
 
     @Transactional
-    public void createNewUsersStatus(Integer id, String name) {
+    public UsersStatusEntity createNewUsersStatus(Integer id, String name) {
         UsersStatusEntity usersStatusEntity = new UsersStatusEntity();
         usersStatusEntity.setId(id);
         usersStatusEntity.setName(name);
         usersStatusRepository.save(usersStatusEntity);
+        return usersStatusEntity;
     }
     @Transactional
     public UsersStatusEntity changeStatus(UsersStatusEntity usersStatusEntity, String status){
@@ -33,4 +34,9 @@ public class UsersStatus {
         if (usersStatusEntity.isPresent()) return usersStatusEntity.get();
         else throw new NoSuchElementException("It doesn't exist!");
     }
+    public Integer delUsersStatusById(Integer id){
+        usersStatusRepository.deleteById(id);
+        return 1;
+    }
+
 }

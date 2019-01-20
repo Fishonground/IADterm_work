@@ -31,7 +31,7 @@ public class People {
         peopleEntity.setSurname(surname);
         peopleEntity.setSecondName(otchestvo);
         peopleEntity.setDateOfBirth(new Date(new java.util.Date().getTime()));
-        peopleEntity.setÔîòî(photo);
+        peopleEntity.setPhoto(photo);
         peopleRepository.save(peopleEntity);
         return peopleEntity;
     }
@@ -43,6 +43,13 @@ public class People {
         else throw new NoSuchElementException("Id doesn't exist!");
 
     }
+
+    public Integer delPeopleById(Integer id){
+        peopleRepository.deleteById(id);
+        return 1;
+    }
+
+
     @Transactional
     public PeopleEntity changeName(PeopleEntity peopleEntity, String name){
         peopleEntity.setName(name);
@@ -71,7 +78,7 @@ public class People {
 
     @Transactional
     public PeopleEntity changePhoto(PeopleEntity peopleEntity, String photo){
-        peopleEntity.setÔîòî(photo);
+        peopleEntity.setPhoto(photo);
         peopleRepository.save(peopleEntity);
         return peopleEntity;
     }

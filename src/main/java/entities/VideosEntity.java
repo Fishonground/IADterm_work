@@ -1,5 +1,9 @@
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Collection;
@@ -79,7 +83,9 @@ public class VideosEntity {
     }
 
     @OneToMany(mappedBy = "videosByVideo")
-    public Collection<MessagesEntity> getMessagesById() {
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JsonIgnore
+        public Collection<MessagesEntity> getMessagesById() {
         return messagesById;
     }
 
@@ -88,6 +94,7 @@ public class VideosEntity {
     }
 
     @OneToMany(mappedBy = "videosByVideo")
+    @JsonIgnore
     public Collection<NewsEntity> getNewsById() {
         return newsById;
     }

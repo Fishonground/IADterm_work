@@ -1,5 +1,7 @@
 package entities;
 
+import org.hibernate.annotations.LazyCollection;
+
 import javax.persistence.*;
 
 @Entity

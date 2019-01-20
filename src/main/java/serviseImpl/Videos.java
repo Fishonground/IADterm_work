@@ -2,17 +2,19 @@ package serviseImpl;
 
 import entities.VideosEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import repository.VideosRepository;
 
 import javax.transaction.Transactional;
 
+@Service
 public class Videos {
     @Autowired
 
     VideosRepository videosRepository;
 
     @Transactional
-    public void createNewVideo(Integer id, Integer cam_id, String description){
+    public VideosEntity createNewVideo(Integer id, Integer cam_id, String description){
 
         VideosEntity videosEntity = new VideosEntity();
         videosEntity.setId(id);
@@ -20,6 +22,7 @@ public class Videos {
         videosEntity.setDescription(description);
         videosRepository.save(videosEntity);
 
+        return videosEntity;
     }
 
     @Transactional
@@ -34,6 +37,14 @@ public class Videos {
         videosEntity.setCamId(cam_id);
         videosRepository.save(videosEntity);
         return videosEntity;
+    }
+    public VideosEntity getVideoById(Integer id){
+        VideosEntity videosEntity = videosRepository.findById(id).get();
+    return videosEntity;
+    }
+    public Integer delVideosById(Integer id){
+        videosRepository.deleteById(id);
+        return 1;
     }
 
 }

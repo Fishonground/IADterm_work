@@ -2,16 +2,18 @@ package serviseImpl;
 
 import entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import repository.OrdersRepository;
 
+@Service
 public class Orders {
     @Autowired
     OrdersRepository ordersRepository;
 
     @Transactional
-    public void CreateNewOrder(Integer id, OrderConditionsEntity orderConditionsEntity , ProductEntity productEntity,
-                               UsersEntity usersEntity){
+    public OrdersEntity CreateNewOrder(Integer id, OrderConditionsEntity orderConditionsEntity , ProductEntity productEntity,
+                                       UsersEntity usersEntity){
         OrdersEntity ordersEntity = new OrdersEntity();
         ordersEntity.setId(id);
         ordersEntity.setOrderConditionsByCondition(orderConditionsEntity);
@@ -19,6 +21,7 @@ public class Orders {
         ordersEntity.setUsersByCustomer(usersEntity);
         ordersRepository.save(ordersEntity);
 
+        return ordersEntity;
     }
 
     @Transactional
@@ -27,6 +30,16 @@ public class Orders {
         ordersRepository.save(ordersEntity);
         return (ordersEntity);
     }
+
+    public OrdersEntity getOrderById(Integer id){
+        OrdersEntity ordersEntity = ordersRepository.findById(id).get();
+        return ordersEntity;
+    }
+    public Integer delOrdersById(Integer id){
+        ordersRepository.deleteById(id);
+        return 1;
+    }
+
 
 
 }

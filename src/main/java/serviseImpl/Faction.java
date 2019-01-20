@@ -3,22 +3,34 @@ package serviseImpl;
 import entities.FactionEntity;
 import entities.PrisonerEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import repository.FactionRepository;
 
+@Service
 public class Faction{
         @Autowired
     FactionRepository factionRepository;
 
 
         @Transactional
-        public void CreateNewFaction(String name, PrisonerEntity prisonerEntity, Integer rating){
+        public FactionEntity CreateNewFaction(String name, PrisonerEntity prisonerEntity, Integer rating){
             FactionEntity factionEntity = new FactionEntity();
             factionEntity.setName(name);
             factionEntity.setPrisonerByMainPerson(prisonerEntity);
             factionEntity.setRating(rating);
-            factionRepository.save(factionEntity) ;
+            return factionRepository.save(factionEntity) ;
         }
+
+        public FactionEntity getFactionByName(String name){
+            FactionEntity factionEntity = factionRepository.findById(name).get();
+            return factionEntity;
+        }
+
+    public Integer delFactionByName(String name){
+        factionRepository.deleteById(name);
+        return 1;
+    }
 
         @Transactional
         public  FactionEntity changeName(FactionEntity factionEntity, String name){

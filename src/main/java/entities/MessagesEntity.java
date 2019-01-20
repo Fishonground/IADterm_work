@@ -1,5 +1,7 @@
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -53,7 +55,7 @@ public class MessagesEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "User", referencedColumnName = "login")
+    @JoinColumn(name = "user", referencedColumnName = "login")
     public UsersEntity getUsersByUser() {
         return usersByUser;
     }

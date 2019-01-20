@@ -1,5 +1,7 @@
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Collection;
@@ -72,6 +74,7 @@ public class PrisonerEntity {
     }
 
     @OneToMany(mappedBy = "prisonerByMainPerson")
+    @JsonIgnore
     public Collection<FactionEntity> getFactionsByPersonId() {
         return factionsByPersonId;
     }
@@ -81,6 +84,7 @@ public class PrisonerEntity {
     }
 
     @OneToMany(mappedBy = "prisonerByPrisoner")
+    @JsonIgnore
     public Collection<MessagesEntity> getMessagesByPersonId() {
         return messagesByPersonId;
     }
@@ -91,6 +95,7 @@ public class PrisonerEntity {
 
     @OneToOne
     @JoinColumn(name = "person_id", referencedColumnName = "id", nullable = false)
+    @JsonIgnore
     public PeopleEntity getPeopleByPersonId() {
         return peopleByPersonId;
     }
@@ -111,6 +116,7 @@ public class PrisonerEntity {
 
     @ManyToOne
     @JoinColumn(name = "owner", referencedColumnName = "login", nullable = false)
+    @JsonIgnore
     public UsersEntity getUsersByOwner() {
         return usersByOwner;
     }
@@ -121,6 +127,7 @@ public class PrisonerEntity {
 
     @ManyToOne
     @JoinColumn(name = "faction", referencedColumnName = "name")
+    @JsonIgnore
     public FactionEntity getFactionByFaction() {
         return factionByFaction;
     }
@@ -130,6 +137,7 @@ public class PrisonerEntity {
     }
 
     @OneToMany(mappedBy = "prisonerByOwner")
+    @JsonIgnore
     public Collection<ThingsEntity> getThingsByPersonId() {
         return thingsByPersonId;
     }

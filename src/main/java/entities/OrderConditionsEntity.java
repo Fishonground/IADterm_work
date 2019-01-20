@@ -1,5 +1,7 @@
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -51,6 +53,7 @@ public class OrderConditionsEntity {
     }
 
     @OneToMany(mappedBy = "orderConditionsByCondition")
+    @JsonIgnore
     public Collection<OrdersEntity> getOrdersById() {
         return ordersById;
     }
